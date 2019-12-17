@@ -1,6 +1,16 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import {
+    IonApp,
+    IonContent,
+    IonHeader, IonIcon,
+    IonItem, IonLabel,
+    IonList,
+    IonMenu, IonPage,
+    IonRouterOutlet,
+    IonTitle,
+    IonToolbar
+} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 
@@ -22,13 +32,19 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Inscription from "./pages/Inscription";
+import ListeEtablissement from "./pages/ListeEtablissements";
+import ViewEtablissement from "./pages/ViewEtablissement";
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
+      <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
+        <Route path="/accueil" component={Home} exact={true} />
+        <Route path="/etablissements" component={ListeEtablissement} exact={true} />
+        <Route path="/consulter/etablissement/:id" component={ViewEtablissement} exact={true} />
+          <Route path="/inscription" component={Inscription} exact={true}/>
+          <Route exact path="/" render={() => <Redirect to="/accueil" />} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
