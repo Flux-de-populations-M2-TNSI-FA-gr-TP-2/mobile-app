@@ -24,11 +24,18 @@ import AuthService from "../services/AuthService";
 
 const style = {
 	bgPrimary: {
-		"--ion-background-color": "#3880ff",
+		"--ion-background-color": "#14c280",
 		color: "white",
 		fontWeight: "bold",
 		verticalAlign: "center"
 	},
+
+	myColorSuccess : {
+		color: "#14c280",
+		fontSize: "medium",
+		fontWeight: "bold"
+	},
+
 	titleMedium: {
 		fontSize: "medium",
 		fontWeight: "bold"
@@ -55,8 +62,8 @@ const Home: React.FC = (props: any) => {
 	let Auth = new AuthService();
 
 	useIonViewWillEnter(() => {
-		if(Auth.loggedIn())
-			props.history.replace('/etablissements');
+		// if(Auth.loggedIn())
+		// 	props.history.replace('/etablissements');
 	});
 
 	const [showToast1, setShowToast1] = React.useState({
@@ -124,17 +131,18 @@ const Home: React.FC = (props: any) => {
 					color="danger"
 				/>
 
-				<IonCard className="ion-no-margin" style={style.root}>
                     <IonCard style={style.transparent}>
                         <IonCardHeader>
-                            <IonCardTitle color="primary" style={style.titleMedium}>
-                                Bienvenue sur PeopleStream
+                            <IonCardTitle style={style.myColorSuccess}>
+	                            <strong>Bienvenue sur Oméni</strong>
                             </IonCardTitle>
                         </IonCardHeader>
 
                         <IonCardContent>
-	                        <IonText color="primary" className="">Vous devez être connecté pour accédez à nos
-                                services</IonText>
+	                        <IonText color="dark">
+		                        <strong>Vous devez être connecté pour accédez à nos
+			                        services</strong>
+	                        </IonText>
                         </IonCardContent>
                     </IonCard>
 
@@ -158,7 +166,16 @@ const Home: React.FC = (props: any) => {
                                         <IonInput required type={"password"} name={"password"} value={formAuth.password} onIonChange={onChangeField}/>
                                     </IonItem>
 
-                                    <IonButton expand="full" shape="round" fill="outline" className="ion-margin-top" type={"submit"}>
+                                    <IonButton expand="full"
+                                               // style={{
+                                               // 	        color: '#14c280',
+	                                           //          '--border-color' : '#14c280',
+	                                           //          '--background-activated' : '#28e070'	}}
+	                                            color={"success"}
+                                               shape="round" fill="outline"
+                                               className="ion-margin-top"
+                                               type={"submit"}
+                                    >
                                         <IonIcon slot="start" name="checkmark-circle-outline"/>
                                         Me connecter
                                     </IonButton>
@@ -171,7 +188,6 @@ const Home: React.FC = (props: any) => {
 
                         </IonCardContent>
                     </IonCard>
-                </IonCard>
 			</IonContent>
 		</IonPage>
 	);

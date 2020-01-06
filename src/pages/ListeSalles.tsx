@@ -48,7 +48,7 @@ const style = {
 		marginBottom: "3em"
 	}
 };
-const ListeEtablissement: React.FC = (props: any) => {
+const ListeSalles: React.FC = (props: any) => {
 
 	const [listeEtablissements, setListeEtablissement] = React.useState();
 	let Auth = new AuthService();
@@ -129,4 +129,4 @@ const ListeEtablissement: React.FC = (props: any) => {
 	);
 };
 
-export default ListeEtablissement;
+export default ListeSalles;

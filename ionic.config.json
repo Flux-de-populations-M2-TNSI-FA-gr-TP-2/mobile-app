@@ -1,5 +1,7 @@
 {
   "name": "Population_Stream",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }

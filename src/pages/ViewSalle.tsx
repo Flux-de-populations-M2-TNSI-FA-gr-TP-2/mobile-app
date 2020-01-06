@@ -53,7 +53,7 @@ const style = {
 		marginBottom: "3em"
 	}
 };
-const ViewEtablissement: React.FC = (props: any) => {
+const ViewSalle: React.FC = (props: any) => {
 
 	const [etablissement, setEtablissement] = React.useState();
 
@@ -183,4 +183,4 @@ const ViewEtablissement: React.FC = (props: any) => {
 	);
 };
 
-export default ViewEtablissement;
+export default ViewSalle;

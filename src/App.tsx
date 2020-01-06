@@ -1,15 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
-    IonApp,
-    IonContent,
-    IonHeader, IonIcon,
-    IonItem, IonLabel,
-    IonList,
-    IonMenu, IonPage,
-    IonRouterOutlet,
-    IonTitle,
-    IonToolbar
+	IonApp, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenu, IonRouterOutlet, IonTitle, IonToolbar
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
@@ -35,19 +27,43 @@ import './theme/variables.css';
 import Inscription from "./pages/Inscription";
 import ListeEtablissement from "./pages/ListeEtablissements";
 import ViewEtablissement from "./pages/ViewEtablissement";
+import ViewSalle from "./pages/ViewSalle";
+import ListeSalles from "./pages/ListeSalles";
 
 const App: React.FC = () => (
-  <IonApp>
-      <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/accueil" component={Home} exact={true} />
-        <Route path="/etablissements" component={ListeEtablissement} exact={true} />
-        <Route path="/consulter/etablissement/:id" component={ViewEtablissement} exact={true} />
-          <Route path="/inscription" component={Inscription} exact={true}/>
-          <Route exact path="/" render={() => <Redirect to="/accueil" />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
+	<IonApp>
+		<IonMenu side="start" contentId="realContent" >
+			<IonHeader>
+				<IonToolbar>
+					<IonTitle>Menu</IonTitle>
+				</IonToolbar>
+			</IonHeader>
+			<IonContent>
+				<IonList>
+					<IonItem routerLink="/etablissements">
+						<IonIcon name="home" slot="start"></IonIcon>
+						<IonLabel>Etablissements</IonLabel>
+					</IonItem>
+
+					<IonItem routerLink="/logout">
+						<IonIcon name="person" slot="start"></IonIcon>
+						<IonLabel>Déconnexion</IonLabel>
+					</IonItem>
+				</IonList>
+			</IonContent>
+		</IonMenu>
+		<IonReactRouter>
+			<IonRouterOutlet id={"realContent"}>
+				<Route path="/accueil" component={Home} exact={true} />
+				<Route path="/etablissements" component={ListeEtablissement} exact={true} />
+				<Route path="/consulter/etablissement/:id" component={ViewEtablissement} exact={true} />
+				<Route path="/inscription" component={Inscription} exact={true}/>
+				<Route path="/liste/salles/:id" component={ListeSalles} exact={true}/>
+				<Route path="/view/salles" component={ViewSalle} exact={true}/>
+				<Route exact path="/" render={() => <Redirect to="/accueil" />} />
+			</IonRouterOutlet>
+		</IonReactRouter>
+	</IonApp>
 );
 
 export default App;
