@@ -163,14 +163,20 @@ const ViewEtablissement: React.FC = (props: any) => {
 									</IonCardTitle>
 								</IonCardHeader>
 							</IonCard>
-
-							<IonCard style={style.transparent}>
-								<IonCardHeader>
-									<IonCardTitle color="danger" style={style.myColorDanger}>
-										Aucun évènement.
-									</IonCardTitle>
-								</IonCardHeader>
-							</IonCard>
+							{
+								etablissement? etablissement.events.map((elt: any, key: number) => {
+									return (
+										<IonCard key={key}>
+											<IonCardHeader>
+												<IonCardTitle>{ elt.name } </IonCardTitle>
+											</IonCardHeader>
+											<IonCardContent>
+												Du {elt.start} au {elt.end} .
+											</IonCardContent>
+										</IonCard>
+									);
+								}) : "Aucun établissement"
+							}
 							<IonButton expand="full" shape="round" fill="outline"  color={"success"} className="ion-margin-top" routerLink={etablissement? "/liste/salles/"+etablissement.id : ""}>
 								<IonIcon slot="start" name="apps"/>
 								Liste des salles
