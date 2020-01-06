@@ -9,7 +9,7 @@ import {
 	IonCard,
 	IonCardHeader,
 	IonCardTitle,
-	useIonViewWillEnter, IonGrid, IonRow, IonCol, IonIcon, IonCardContent, IonButton,
+	useIonViewWillEnter, IonGrid, IonRow, IonCol, IonCardContent,
 } from '@ionic/react';
 import React from 'react';
 import AuthService from "../services/AuthService";
@@ -83,7 +83,7 @@ const ViewSalle: React.FC = (props: any) => {
 				}),
 			};
 
-			fetch('https://fluxtnsi.ddns.net/api/location/'+id, queryOptions)
+			fetch('https://fluxtnsi.ddns.net/api/room/'+id, queryOptions)
 				.then(response => {
 					return response.json()
 				})
@@ -111,7 +111,7 @@ const ViewSalle: React.FC = (props: any) => {
 						<IonMenuButton></IonMenuButton>
 					</IonButtons>
 					<IonTitle className="ion-text-center ion-padding">
-						Etablissement { etablissement? etablissement.name : '' }
+						Salle { etablissement? etablissement.name : '' }
 					</IonTitle>
 				</IonToolbar>
 			</IonHeader>
@@ -119,7 +119,7 @@ const ViewSalle: React.FC = (props: any) => {
 				<IonCard style={style.transparent}>
 					<IonCardHeader>
 						<IonCardTitle color="primary" style={style.myColorSuccess}>
-							Informations en temps réel de { etablissement? etablissement.name : '' } situé au { etablissement? etablissement.address : '' }
+							Informations en temps réel de { etablissement? etablissement.name : '' } situé à l'étage { etablissement? etablissement.floor : '' }
 						</IonCardTitle>
 					</IonCardHeader>
 				</IonCard>
@@ -156,25 +156,6 @@ const ViewSalle: React.FC = (props: any) => {
 								</IonCardContent>
 
 							</IonCard>
-							<IonCard style={style.transparent}>
-								<IonCardHeader>
-									<IonCardTitle color="primary" style={style.myColorSuccess}>
-										Liste des évènements
-									</IonCardTitle>
-								</IonCardHeader>
-							</IonCard>
-
-							<IonCard style={style.transparent}>
-								<IonCardHeader>
-									<IonCardTitle color="danger" style={style.myColorDanger}>
-										Aucun évènement.
-									</IonCardTitle>
-								</IonCardHeader>
-							</IonCard>
-							<IonButton expand="full" shape="round" fill="outline"  color={"success"} className="ion-margin-top" >
-								<IonIcon slot="start" name="apps"/>
-								Liste des salles
-							</IonButton>
 						</IonCol>
 					</IonRow>
 				</IonGrid>

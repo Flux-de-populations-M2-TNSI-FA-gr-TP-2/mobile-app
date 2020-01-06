@@ -50,7 +50,7 @@ const style = {
 };
 const ListeSalles: React.FC = (props: any) => {
 
-	const [listeEtablissements, setListeEtablissement] = React.useState();
+	const [listeSalles, setListeSalle] = React.useState();
 	let Auth = new AuthService();
 	// const logoutUser = () => {
 	// 	Auth.logout();
@@ -71,12 +71,13 @@ const ListeSalles: React.FC = (props: any) => {
 				}),
 			};
 
-			fetch('https://fluxtnsi.ddns.net/api/location', queryOptions)
+			fetch('https://fluxtnsi.ddns.net/api/room', queryOptions)
 				.then(response => {
 					return response.json()
 				})
 				.then(resJson => {
-					setListeEtablissement(resJson.data);
+					console.log(resJson.data)
+					setListeSalle(resJson.data);
 
 				})
 				.catch(error => console.log(error));
@@ -97,7 +98,7 @@ const ListeSalles: React.FC = (props: any) => {
 						<IonMenuButton></IonMenuButton>
 					</IonButtons>
 					<IonTitle className="ion-text-center ion-padding">
-						Etablissements
+						Liste des salles
 					</IonTitle>
 				</IonToolbar>
 			</IonHeader>
@@ -105,24 +106,24 @@ const ListeSalles: React.FC = (props: any) => {
 				<IonCard style={style.transparent}>
 					<IonCardHeader>
 						<IonCardTitle color="primary" style={style.myColorSuccess}>
-							Liste des établissements
+							Liste des salles
 						</IonCardTitle>
 					</IonCardHeader>
 				</IonCard>
 
 				{
-					listeEtablissements? listeEtablissements.map((elt: any, key: number) => {
+					listeSalles? listeSalles.map((elt: any, key: number) => {
 						return (
-							<IonCard key={key} routerLink={"/consulter/etablissement/"+elt.id}>
-								<img src={ elt.image } alt={"Batiment "+elt.name}/>
+							<IonCard key={key} routerLink={"/view/salle/"+elt.id}>
+								{/*<img src={ elt.image } alt={"Batiment "+elt.name}/>*/}
 								<IonCardHeader>
-									<IonCardTitle>{ elt.name } au {elt.address } </IonCardTitle>
+									<IonCardTitle>{ elt.name } à l'étage {elt.floor } </IonCardTitle>
 								</IonCardHeader>
 								<IonCardContent>
-									{elt.rooms.length} salles.
+									{/*{elt.rooms.length} salles.*/}
 								</IonCardContent>
 							</IonCard>);
-					}) : "Aucun établissement"
+					}) : "Aucune salle pour cet établissement"
 				}
 			</IonContent>
 		</IonPage>

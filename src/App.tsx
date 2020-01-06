@@ -59,7 +59,7 @@ const App: React.FC = () => (
 				<Route path="/consulter/etablissement/:id" component={ViewEtablissement} exact={true} />
 				<Route path="/inscription" component={Inscription} exact={true}/>
 				<Route path="/liste/salles/:id" component={ListeSalles} exact={true}/>
-				<Route path="/view/salles" component={ViewSalle} exact={true}/>
+				<Route path="/view/salle/:id" component={ViewSalle} exact={true}/>
 				<Route exact path="/" render={() => <Redirect to="/accueil" />} />
 			</IonRouterOutlet>
 		</IonReactRouter>

@@ -171,7 +171,7 @@ const ViewEtablissement: React.FC = (props: any) => {
 									</IonCardTitle>
 								</IonCardHeader>
 							</IonCard>
-							<IonButton expand="full" shape="round" fill="outline"  color={"success"} className="ion-margin-top" >
+							<IonButton expand="full" shape="round" fill="outline"  color={"success"} className="ion-margin-top" routerLink={etablissement? "/liste/salles/"+etablissement.id : ""}>
 								<IonIcon slot="start" name="apps"/>
 								Liste des salles
 							</IonButton>

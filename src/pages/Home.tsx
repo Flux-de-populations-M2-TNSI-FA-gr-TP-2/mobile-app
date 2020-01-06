@@ -58,9 +58,7 @@ const style = {
     }
 };
 const Home: React.FC = (props: any) => {
-
-	let Auth = new AuthService();
-
+	
 	useIonViewWillEnter(() => {
 		// if(Auth.loggedIn())
 		// 	props.history.replace('/etablissements');
